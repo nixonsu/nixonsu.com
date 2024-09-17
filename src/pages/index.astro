@@ -1,0 +1,65 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+---
+
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <div class="space-y-8">
+      <h4 class="animate font-semibold text-black dark:text-white">
+        Hey there, I'm Nixon <span class="text-xl">👋🏻</span> 
+      </h4>
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            Just another engineer who probably gets more screen time than he's supposed to
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <article class="space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Adventures
+        </h5>
+          <p class="animate">
+            <ul>
+              <li>Payments @ <Link href="https://myob.com" aria-label="MYOB webpage" external>MYOB</Link> (Current)</li>
+              <li>Early engineer @ <Link href="https://beyondzero.tech/" aria-label="Beyond Zero webpage" external>Beyond Zero</Link></li>
+              <li>Intern @ <Link href="https://anz.com.au" aria-label="ANZ webpage" external>ANZ</Link>, <Link href="https://kpmg.com/au" aria-label="KPMG webpage" external>KPMG</Link>, <Link href="https://deloitte.com/au" aria-label="Deloitte webpage" external>Deloitte</Link></li>
+            </ul>
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Don't Be A Stranger
+        </h5>
+        <article>
+          <p>
+          Socials below if you're feeling social
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {SOCIALS.map(SOCIAL => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME}
+              </Link>
+              {"/"}
+            </li>
+          ))}
+          <li class="line-clamp-1">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
